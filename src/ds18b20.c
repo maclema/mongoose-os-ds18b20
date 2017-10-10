@@ -36,7 +36,7 @@ void ds18b20_read_all(int pin, int res, ds18b20_read_t callback) {
             printf("Memory allocation failure!");   // If not, print a useful message
             exit(1);                                // And blow up
         }
-        temp->rom = rom;                            // Set the rom attribute
+        memcpy(temp->rom, rom, 8);                  // Copy the ROM code into the result
         temp->mac = new_string(23);                 // Allocate a string for the MAC address
         to_mac(rom, temp->mac);                     // Convert the rom to a MAC address string
         temp->next = list;                          // link to previous sensor
@@ -54,7 +54,7 @@ void ds18b20_read_all(int pin, int res, ds18b20_read_t callback) {
     
     // Step 4: Start temperature conversion
     mgos_onewire_reset(ow);                         // Reset
-    mgos_onewire_write(ow, 0xCC);                   // Skip Rom (starts conversion on all sensors)
+    mgos_onewire_write(ow, 0xCC);                   // Skip Rom
     mgos_onewire_write(ow, 0x44);                   // Start conversion
     mgos_usleep(us);                                // Wait for conversion
 

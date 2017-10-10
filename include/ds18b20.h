@@ -1,5 +1,5 @@
 struct ds18b20_result {
-    uint8_t *rom;
+    uint8_t rom[8];
     char *mac;
     float temp;
     struct ds18b20_result *next;
