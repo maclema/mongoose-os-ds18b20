@@ -1,0 +1,24 @@
+author: Matt MacLean
+type: lib
+description: Basic C module for DS18B20 sensors.
+version: 1.0
+
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+tags:
+  - c
+  - ds18b20
+  - sensors
+
+sources:
+  - src
+
+includes:
+  - include
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/onewire
+
+manifest_version: 2017-05-18
