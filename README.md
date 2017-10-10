@@ -40,4 +40,28 @@ enum mgos_app_init_result mgos_app_init(void) {
     // Init OK
     return MGOS_APP_INIT_SUCCESS;
 }
+
+// DS18B20 Resolution Configuration
+// 9-bit resolution:   97.5ms read time
+// 10-bit resolution:  187.5ms read time
+// 11-bit resolution:  375ms read time
+// 12-bit resolution:  750ms read time
 ```
+
+## Multi-Sensor Wiring
+
+```
+  [---]
+  [---]
+  | | |
+  1 2 3
+
+  PIN 1: GND
+  PIN 2: Data
+  PIN 3: Vcc (3.3v - 5v)
+```
+
+- All GND pins to ground
+- All Vcc pins to +5v
+- All data pins to GPIO pin X
+- Connect +5v to GPIO pin X with a 4.7k resistor (pullup resistor - this is important when using long wires for the sensors)
